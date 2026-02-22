@@ -1,6 +1,7 @@
 import express from 'express';
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
+import apiRouter from './routes';
 
 /**
  * Start Express, connect to Postgres, and expose
@@ -14,6 +15,8 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(express.json());
+
+app.use('/api', apiRouter);
 
 // Database
 export const db = new Pool({
