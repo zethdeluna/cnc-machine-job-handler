@@ -2,6 +2,10 @@ import express from 'express';
 import { Pool } from 'pg';
 import dotenv from 'dotenv';
 import apiRouter from './routes';
+import { connectRedis } from './db/redis';
+import { startScheduler } from './workers/scheduler';
+import { initWebSocket } from './websocket';
+import http from 'http';
 
 /**
  * Start Express, connect to Postgres, and expose
@@ -15,7 +19,6 @@ const PORT = process.env.PORT || 3001;
 
 // Middleware
 app.use(express.json());
-
 app.use('/api', apiRouter);
 
 // Database
@@ -34,15 +37,27 @@ app.get('/health', async (req, res) => {
 });
 
 // Start
-app.listen(PORT, () => {
-	console.log(`Server running on port ${PORT}`);
+async function start() {
 
-	db.connect()
-		.then(client => {
-			console.log('Database connected');
-			client.release();
-		})
-		.catch(err => {
-			console.error('Database connection failed: ', err.message);
-		});
+	const client = await db.connect();
+	console.log('Database connected');
+	client.release();
+
+	await connectRedis();
+
+	startScheduler();
+
+	const server = http.createServer(app);
+
+	await initWebSocket(server);
+
+	server.listen(PORT, () => {
+		console.log(`Server running on port ${PORT}`);
+	});
+
+}
+
+start().catch(err => {
+	console.error('Failed to start server:', err.message);
+	process.exit(1);
 });

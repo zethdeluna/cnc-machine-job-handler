@@ -1,4 +1,5 @@
 import { pool } from '../db';
+import { enqueueJob } from '../workers/scheduler';
 
 export async function getAllJobs(filters: { status?: string; machineId?: number }) {
 
@@ -103,6 +104,9 @@ export async function createJob(data: {
 		);
 
 		await client.query('COMMIT');
+
+		await enqueueJob(job.id, job.priority ?? 0);
+
 		return job;
 
 	} catch (err) {

@@ -49,7 +49,7 @@ export async function createJob(req: Request, res: Response) {
 
 		const { assigned_machine_id, name, material, complexity, required_machine_type, priority, estimated_runtime } = req.body;
 
-		if ( !assigned_machine_id || !name || !material || !complexity || !required_machine_type ) {
+		if ( !name || !material || !complexity || !required_machine_type ) {
 			return res.status(400).json({ error: 'assigned_machine_id, name, material, complexity, and required_machine_type are required' });
 		}
 
