@@ -1,0 +1,147 @@
+.row {
+	border-bottom: 1px solid var(--border-subtle);
+	cursor: pointer;
+	transition: background-color 0.12s ease;
+}
+
+.row:hover {
+	background-color: var(--bg-hover);
+}
+
+.row:last-child {
+	border-bottom: none;
+}
+
+.row td {
+	padding: 11px 12px;
+	vertical-align: middle;
+	font-size: 13px;
+	color: var(--text-secondary);
+	white-space: nowrap;
+}
+
+/*** ID Column ***/
+
+.id {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	color: var(--text-muted);
+	width: 52px;
+}
+
+.idPrefix {
+	opacity: 0.5;
+}
+
+/*** Name / Machine Assignment ***/
+
+.name {
+	min-width: 180px;
+	white-space: normal;
+}
+
+.nameText {
+	display: block;
+	color: var(--text-primary);
+	font-weight: 500;
+	font-size: 13px;
+}
+
+.machineName {
+	display: block;
+	font-family: var(--font-mono);
+	font-size: 11px;
+	color: var(--text-muted);
+	margin-top: 2px;
+}
+
+/*** Material ***/
+
+.material {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	text-transform: lowercase;
+}
+
+/*** Complexity Bar ***/
+
+.complexityCell {
+	width: 80px;
+}
+
+.complexity {
+	display: inline-flex;
+	gap: 3px;
+}
+
+.complexityBlock {
+	display: inline-block;
+	width: 8px;
+	height: 14px;
+	border-radius: 2px;
+	background-color: var(--border-strong);
+}
+
+.complexityFilled {
+	background-color: var(--accent);
+}
+
+/*** Machine Type ***/
+
+.machineType {
+	font-family: var(--font-mono);
+	font-size: 11px;
+	text-transform: uppercase;
+	letter-spacing: 0.06em;
+	color: var(--text-muted);
+}
+
+/*** Priority ***/
+
+.priority {
+	font-family: var(--font-mono);
+	font-size: 13px;
+	text-align: center;
+	width: 60px;
+}
+
+.priorityHigh {
+	color: var(--accent);
+	font-weight: 600;
+}
+
+.priorityNormal {
+	color: var(--text-muted);
+}
+
+/*** Runtime ***/
+
+.runtime {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	text-align: right;
+}
+
+/*** Status ***/
+
+.status {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+}
+
+.retries {
+	font-family: var(--font-mono);
+	font-size: 10px;
+	color: var(--status-failed);
+	opacity: 0.8;
+}
+
+/*** Timestamp ***/
+
+.time {
+	font-family: var(--font-mono);
+	font-size: 11px;
+	color: var(--text-muted);
+	text-align: right;
+}

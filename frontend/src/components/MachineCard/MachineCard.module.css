@@ -1,0 +1,98 @@
+.card {
+	background-color: var(--bg-surface);
+	border: 1px solid var(--border-muted);
+	border-radius: var(--radius-md);
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+/*** Card Accents ***/
+
+.card::before {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 3px;
+}
+
+.card.idle::before {
+	background-color: var(--status-idle);
+}
+
+.card.running::before {
+	background-color: var(--status-running);
+}
+
+.card.maintenance::before {
+	background-color: var(--status-maintenance);
+}
+
+.card.error::before {
+	background-color: var(--status-error);
+}
+
+.card.running {
+	border-color: var(--status-running-border);
+	box-shadow: 0 0 12px rgba(16, 185, 129, 0.08);
+}
+
+.card.error {
+	border-color: var(--status-error-border);
+	box-shadow: 0 0 12px rgba(239, 68, 68, 0.08);
+}
+
+/*** Card Header ***/
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.icon {
+	font-size: 18px;
+	line-height: 1;
+	opacity: 0.6;
+}
+
+.type {
+	font-family: var(--font-mono);
+	font-size: 10px;
+	font-weight: 500;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--text-muted);
+}
+
+/* Machine name */
+
+.name {
+	font-family: var(--font-mono);
+	font-size: 17px;
+	font-weight: 600;
+	color: var(--text-primary);
+	letter-spacing: -0.01em;
+}
+
+/*** Card Footer ***/
+
+.footer {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	margin-top: 2px;
+}
+
+.jobCount {
+	font-family: var(--font-mono);
+	font-size: 11px;
+	color: var(--text-muted);
+}

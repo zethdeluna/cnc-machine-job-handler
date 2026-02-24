@@ -1,0 +1,134 @@
+/*** Badge Components ***/
+
+.badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+	padding: 2px 9px 2px 7px;
+	border-radius: var(--radius-sm);
+	border: 1px solid transparent;
+	font-family: var(--font-mono);
+	font-size: 11px;
+	font-weight: 500;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	white-space: nowrap;
+	line-height: 1.6;
+}
+
+.pip {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	flex-shrink: 0;
+	/* Color is inherited from the parent variant class below */
+	background-color: currentColor;
+}
+
+.dot {
+	display: inline-block;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	flex-shrink: 0;
+}
+
+/*** Status Variants ***/
+
+.idle {
+	color: var(--status-idle);
+	background-color: var(--status-idle-bg);
+	border-color: var(--status-idle-border);
+}
+
+.running {
+	color: var(--status-running);
+	background-color: var(--status-running-bg);
+	border-color: var(--status-running-border);
+	animation: runningPulse 2.5s ease-in-out infinite;
+}
+
+.queued {
+	color: var(--status-queued);
+	background-color: var(--status-queued-bg);
+	border-color: var(--status-queued-border);
+}
+
+.assigned {
+	color: var(--status-assigned);
+	background-color: var(--status-assigned-bg);
+	border-color: var(--status-assigned-border);
+}
+
+.paused {
+	color: var(--status-paused);
+	background-color: var(--status-paused-bg);
+	border-color: var(--status-paused-border);
+}
+
+.completed {
+	color: var(--status-completed);
+	background-color: var(--status-completed-bg);
+	border-color: var(--status-completed-border);
+	opacity: 0.75;
+}
+
+.failed {
+	color: var(--status-failed);
+	background-color: var(--status-failed-bg);
+	border-color: var(--status-failed-border);
+}
+
+.maintenance {
+	color: var(--status-maintenance);
+	background-color: var(--status-maintenance-bg);
+	border-color: var(--status-maintenance-border);
+}
+
+.error {
+	color: var(--status-error);
+	background-color: var(--status-error-bg);
+	border-color: var(--status-error-border);
+}
+
+.dot.idle {
+	background-color: var(--status-idle);
+}
+
+.dot.running {
+	background-color: var(--status-running);
+}
+
+.dot.queued {
+	background-color: var(--status-queued);
+}
+
+.dot.assigned {
+	background-color: var(--status-assigned);
+}
+
+.dot.paused {
+	background-color: var(--status-paused);
+}
+
+.dot.completed {
+	background-color: var(--status-completed); opacity: 0.6;
+}
+
+.dot.failed {
+	background-color: var(--status-failed);
+}
+
+.dot.maintenance {
+	background-color: var(--status-maintenance);
+}
+
+.dot.error {
+	background-color: var(--status-error);
+}
+
+/* ---- Animations ---- */
+@keyframes runningPulse {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.7; }
+}

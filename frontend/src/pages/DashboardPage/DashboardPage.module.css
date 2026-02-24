@@ -1,0 +1,282 @@
+.page {
+	display: flex;
+	flex-direction: column;
+	height: 100vh;
+	overflow: hidden;
+}
+
+/* ============================================================
+   HEADER BAR
+   ============================================================ */
+.header {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	padding: 0 20px;
+	height: 52px;
+	background-color: var(--bg-surface);
+	border-bottom: 1px solid var(--border-muted);
+	flex-shrink: 0;
+	z-index: 10;
+}
+
+/* Brand */
+.brand {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	margin-right: 8px;
+}
+
+.brandIcon {
+	font-size: 18px;
+	color: var(--accent);
+	line-height: 1;
+}
+
+.brandName {
+	font-family: var(--font-mono);
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.05em;
+	text-transform: uppercase;
+	color: var(--text-primary);
+}
+
+/* Machine stats */
+.machineStats {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	flex: 1;
+}
+
+.stat {
+	display: flex;
+	align-items: center;
+	gap: 5px;
+	font-family: var(--font-mono);
+	font-size: 12px;
+	color: var(--text-secondary);
+}
+
+.statDot {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+}
+
+.statDot[data-status="running"] {
+	background-color: var(--status-running);
+}
+
+.statDot[data-status="idle"] {
+	background-color: var(--status-idle);
+}
+
+.statDivider {
+	color: var(--border-strong);
+	font-size: 12px;
+}
+
+/* New job button */
+.newJobBtn {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+	color: var(--text-inverse);
+	background-color: var(--accent);
+	border: none;
+	border-radius: var(--radius-sm);
+	padding: 6px 14px;
+	transition: background-color 0.15s;
+	flex-shrink: 0;
+}
+
+.newJobBtn:hover {
+	background-color: #d97706;
+}
+
+/* ============================================================
+   MAIN CONTENT — Two-panel split
+   ============================================================ */
+.main {
+	display: grid;
+	/* Fleet panel is narrower; job queue takes the remaining space */
+	grid-template-columns: 280px 1fr;
+	flex: 1;
+	overflow: hidden;
+}
+
+/* ============================================================
+   SHARED PANEL STYLES
+   ============================================================ */
+.machinesPanel,
+.jobsPanel {
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.machinesPanel {
+	border-right: 1px solid var(--border-muted);
+	background-color: var(--bg-base);
+}
+
+.jobsPanel {
+	background-color: var(--bg-base);
+}
+
+/* Panel header row */
+.panelHeader {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	padding: 14px 16px 12px;
+	border-bottom: 1px solid var(--border-subtle);
+	flex-shrink: 0;
+}
+
+.panelTitle {
+	font-family: var(--font-mono);
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--text-muted);
+	flex: 1;
+}
+
+.panelCount {
+	font-family: var(--font-mono);
+	font-size: 11px;
+	color: var(--text-muted);
+	background-color: var(--bg-elevated);
+	border: 1px solid var(--border-muted);
+	border-radius: 3px;
+	padding: 1px 7px;
+}
+
+/* ============================================================
+   MACHINE PANEL — Grid of cards
+   ============================================================ */
+.machineGrid {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 12px;
+	overflow-y: auto;
+}
+
+/* ============================================================
+   JOBS PANEL — Table
+   ============================================================ */
+.filterSelect {
+	background-color: var(--bg-elevated);
+	border: 1px solid var(--border-muted);
+	border-radius: var(--radius-sm);
+	color: var(--text-secondary);
+	font-family: var(--font-mono);
+	font-size: 11px;
+	padding: 3px 22px 3px 8px;
+	cursor: pointer;
+	outline: none;
+	appearance: none;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 12 12'%3E%3Cpath fill='%23525c68' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: right 7px center;
+	transition: border-color 0.15s;
+}
+
+.filterSelect:focus,
+.filterSelect:hover {
+	border-color: var(--border-strong);
+}
+
+.tableWrapper {
+	overflow-y: auto;
+	flex: 1;
+}
+
+.table {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+.table thead tr {
+	position: sticky;
+	top: 0;
+	background-color: var(--bg-surface);
+	z-index: 1;
+}
+
+.table thead th {
+	padding: 10px 12px;
+	font-family: var(--font-mono);
+	font-size: 10px;
+	font-weight: 600;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+	color: var(--text-muted);
+	text-align: left;
+	border-bottom: 1px solid var(--border-muted);
+	white-space: nowrap;
+}
+
+/* ============================================================
+   SHARED STATES
+   ============================================================ */
+.loadingMsg,
+.errorMsg {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	padding: 20px 16px;
+}
+
+.loadingMsg {
+	color: var(--text-muted);
+}
+
+.errorMsg {
+	color: var(--status-failed);
+}
+
+/* Empty state */
+.emptyState {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+	flex: 1;
+	padding: 60px 20px;
+	color: var(--text-muted);
+}
+
+.emptyIcon {
+	font-size: 32px;
+	opacity: 0.4;
+}
+
+.emptyState p {
+	font-family: var(--font-mono);
+	font-size: 13px;
+}
+
+.emptyCreateBtn {
+	background: none;
+	border: 1px solid var(--border-muted);
+	border-radius: var(--radius-sm);
+	color: var(--text-secondary);
+	font-family: var(--font-mono);
+	font-size: 12px;
+	padding: 7px 14px;
+	transition: all 0.15s;
+}
+
+.emptyCreateBtn:hover {
+	border-color: var(--accent-dim);
+	color: var(--accent);
+}
