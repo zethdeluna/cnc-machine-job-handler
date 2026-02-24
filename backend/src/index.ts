@@ -6,6 +6,7 @@ import { connectRedis } from './db/redis';
 import { startScheduler } from './workers/scheduler';
 import { initWebSocket } from './websocket';
 import http from 'http';
+import cors from 'cors';
 
 /**
  * Start Express, connect to Postgres, and expose
@@ -18,6 +19,9 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 // Middleware
+app.use(cors({
+  origin: process.env.FRONTEND_URL ?? 'http://localhost:5174'
+}));
 app.use(express.json());
 app.use('/api', apiRouter);
 
