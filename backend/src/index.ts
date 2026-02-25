@@ -43,18 +43,24 @@ app.get('/health', async (req, res) => {
 // Start
 async function start() {
 
+	// Connect to PostgreSQL
 	const client = await db.connect();
 	console.log('Database connected');
 	client.release();
 
+	// Connect to Redis
 	await connectRedis();
 
+	// Start the background job scheduler
 	startScheduler();
 
+	// Create an HTTP server
 	const server = http.createServer(app);
 
+	// Attach WebSockets to it
 	await initWebSocket(server);
 
+	// Start listening for requests
 	server.listen(PORT, () => {
 		console.log(`Server running on port ${PORT}`);
 	});
