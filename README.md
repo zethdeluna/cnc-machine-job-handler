@@ -14,6 +14,7 @@ This was built as a portfolio project targeting mid-level software engineering r
 - **Queue:** Redis
 - **Real-time:** WebSockets
 - **Infrastructure:** Docker + Docker Compose
+- **Host**: Railway
 
 ---
 
