@@ -309,7 +309,8 @@ body {
 	font-family: var(--font-sans);
 	font-size: 1rem;
 	line-height: 1;
-	background: var(--bg-base) radial-gradient(circle, #1E2329 1px, transparent 1px);
+	/* background: var(--bg-base) radial-gradient(circle, #1E2329 1px, transparent 1px); */
+	background: var(--bg-base);
 	background-size: 28px 28px;
 	color: var(--text-primary);
 	-webkit-font-smoothing: antialiased;
