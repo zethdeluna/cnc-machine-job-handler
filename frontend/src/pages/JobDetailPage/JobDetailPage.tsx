@@ -174,10 +174,10 @@ export function JobDetailPage() {
 					<dl className={styles.detail}>
 
 						<dt>Material</dt>
-						<dd>{job.material}</dd>
+						<dd className={styles.mono}>{job.material}</dd>
 
 						<dt>Complexity</dt>
-						<dd>
+						<dd className={styles.mono}>
 							<ComplexityBar value={job.complexity} /> <span className={styles.complexityNum}>{job.complexity}/5</span>
 						</dd>
 
@@ -185,7 +185,7 @@ export function JobDetailPage() {
 						<dd className={styles.mono}>{job.required_machine_type}</dd>
 
 						<dt>Assigned to</dt>
-						<dd>{job.machine_name ?? <span className={styles.dimmed}>-</span>}</dd>
+						<dd className={styles.mono}>{job.machine_name ?? <span className={styles.dimmed}>-</span>}</dd>
 
 						<dt>Priority</dt>
 						<dd className={job.priority > 0 ? styles.priorityHigh : styles.mono}>{job.priority}</dd>

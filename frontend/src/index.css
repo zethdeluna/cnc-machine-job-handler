@@ -338,10 +338,6 @@ dd + dt {
 	margin-top: 16px;
 }
 
-dd {
-	font-family: var(--font-mono);
-}
-
 /*** Scrollbar ***/
 
 ::-webkit-scrollbar {
